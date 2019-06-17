@@ -26,39 +26,38 @@
     <form>
         <div class="container">
             <div>
+                <p> Get all users</p>
                 <input type="button" onclick="readAll()" value="Get all users"> <br>
                 <hr>
                 </hr>
-                Find a user (enter ID number)
-                <input id="num1" type="number">
+                <p>Find a user</p>
+                <input id="num1" type="number" placeholder="enter id">
                 <input type="button" onclick="read(num1.value)" value="Get a user">
                 <hr>
                 </hr>
-                Create a user
-                <input type="button" onclick="create()" value="Create user"> </input><br>
-                Update a user
-                <input id="userToUpdate" type="number">
-                <input type="button" onclick="update(userToUpdate.value)" value="Update user"><br>
-                Enter name:
-                <input id="name" type="text" placeholder="enter name"><br>
-                Enter score:
+                <!-- name -->
+                <p>Name:</p>
+                <input id="name" type="text" placeholder="enter name"><br> 
+                <p>Score:</p>
                 <input id="score" type="number" placeholder="enter score"><br>
-
+                <p>Create a user</p>
+                <input type="button" onclick="create()" value="Create user"> </input><br>
+                <p>Update a user</p>
+                <input type="button" onclick="update(userToUpdate.value)" value="Update user">
+                <input id="userToUpdate" type="number" placeholder="enter id"><br>
+                <hr>
+                </hr>
+                <p>Delete a user</p>
+                <input id="accToDelete" type="number" placeholder="enter id">
+                <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
             </div>
-            <hr>
-            </hr>
-            Delete an account (Enter account ID)
-            <input id="accToDelete" type="number">
-            <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
-        </div>
-        <div>
-            <hr>
-            </hr>
-            <p> Result =
-                <span id="result">
-                </span>
-            </p>
-        </div>
+            <div>
+                <hr>
+                </hr>
+                <p>Result:
+                    <span id="result"></span>
+                </p>
+            </div>
         </div>
     </form>
 
