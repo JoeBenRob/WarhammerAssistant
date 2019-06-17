@@ -47,8 +47,8 @@ function destroy(id) {
 
 function createUser() {
     const aUser = {
-        name: name.value,
-        score: score.value
+        name: namebox.value,
+        score: scorebox.value
     }
     console.log(aUser);
     return aUser;
