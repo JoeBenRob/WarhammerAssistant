@@ -13,3 +13,5 @@ INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (1, 'Order')
 INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (2, 'Chaos')
 INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (3, 'Destruction')
 INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (4, 'Death')
+
+INSERT INTO ARMY (id, name, allegiance) VALUES (1, 'Seraphon', 'Order')

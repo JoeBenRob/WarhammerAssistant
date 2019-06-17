@@ -23,9 +23,9 @@ public class UserDatabaseRepo implements UserRepo {
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
-
 	@Inject
 	private JSONUtil util;
+	
 	
 	public String getAllUser() {
 		Query query = manager.createQuery("Select a FROM User a");

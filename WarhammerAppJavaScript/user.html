@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title>Warhammer Assistant-Users</title>
+    <link href=".Stylesheet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>WARHAMMER ASSISTANT</h1>
+        <p>USERS</p>
+    </div>
+
+    <div class="sidenav">
+        <a href="index.html" class="textfont">HOME</a>
+        <a href="user.html" class="textfont">USERS</a>
+        <a href="army.html" class="textfont">ARMIES</a>
+        <a href="#Search" class="textfont">SEARCH</a>
+    </div>
+
+    <form>
+        <div class="container">
+            <div>
+                <input type="button" onclick="readAll()" value="Get all users"> <br>
+                <hr>
+                </hr>
+                Find a user (enter ID number)
+                <input id="num1" type="number">
+                <input type="button" onclick="read(num1.value)" value="Get a user">
+                <hr>
+                </hr>
+                Create a user
+                <input type="button" onclick="create()" value="Create user"> </input><br>
+                Update a user
+                <input id="userToUpdate" type="number">
+                <input type="button" onclick="update(userToUpdate.value)" value="Update user"><br>
+                Enter name:
+                <input id="name" type="text" placeholder="enter name"><br>
+                Enter score:
+                <input id="score" type="number" placeholder="enter score"><br>
+
+            </div>
+            <hr>
+            </hr>
+            Delete an account (Enter account ID)
+            <input id="accToDelete" type="number">
+            <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
+        </div>
+        <div>
+            <hr>
+            </hr>
+            <p> Result =
+                <span id="result">
+                </span>
+            </p>
+        </div>
+        </div>
+    </form>
+
+    <script src="user.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

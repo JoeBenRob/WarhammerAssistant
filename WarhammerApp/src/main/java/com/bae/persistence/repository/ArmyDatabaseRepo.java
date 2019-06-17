@@ -1,5 +1,7 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
+
 import java.util.Collection;
 
 import javax.enterprise.inject.Default;
@@ -23,21 +25,21 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 	@Inject
 	private JSONUtil util;
 	
-	@Override
+	
 	public String getAllArmy() {
 		Query query = manager.createQuery("Select a FROM Army a");
 		Collection<Army> army = (Collection<Army>) query.getResultList();
 		return util.getJSONForObject(army);
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String createArmy(String army) {
 		Army anArmy = util.getObjectForJSON(army, Army.class);
 		manager.persist(anArmy);
 		return "{\"message\": \"Army has been created\"}";
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String deleteArmy(int id) {
 		Army anArmy = util.getObjectForJSON(getAnArmy(id), Army.class);
 		if (manager.contains(manager.find(Army.class, id))) {
@@ -46,7 +48,7 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 		return "{\"message\": \"Army has been removed\"}";
 	}
 
-	@Override
+	@Transactional(REQUIRED)
 	public String updateArmy(int id, String army) {
 		Army transArmy = util.getObjectForJSON(army, Army.class);
 		Army oldArmy = manager.find(Army.class, id);
@@ -57,7 +59,6 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 		return "{\"message\": \"Unit has been updated\"}";
 	}
 
-	@Override
 	public String getAnArmy(int id) {
 		return util.getJSONForObject(manager.find(Army.class, id));
 	}

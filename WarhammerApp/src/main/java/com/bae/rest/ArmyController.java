@@ -12,7 +12,6 @@ import javax.ws.rs.Produces;
 import com.bae.business.ArmyService;
 import com.bae.business.UnitService;
 
-
 @Path("army")
 public class ArmyController {
 	

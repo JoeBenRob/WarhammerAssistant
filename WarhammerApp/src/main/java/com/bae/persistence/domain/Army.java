@@ -12,11 +12,12 @@ public class Army {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	
-	public Army(int id, String name) {
+	private String allegiance;
+	public Army(int id, String name, String allegiance) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.allegiance = allegiance;
 	}
 	
 	public Army() {
@@ -37,6 +38,14 @@ public class Army {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getAllegiance() {
+		return allegiance;
+	}
+	
+	public void setAllegiance(String allegiance) {
+		this.allegiance = allegiance;
 	}
 	
 }
