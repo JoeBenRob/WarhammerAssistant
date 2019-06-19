@@ -20,12 +20,12 @@ const makeRequest = (method, url, body) => {
 }
 
 function read(id) {
-    makeRequest("GET", `${path}/getArmy/${id}`)
+    makeRequest("GET", `${path}getArmy/${id}`)
         .then(res => { console.log(res) });
 }
 
 function readAll() {
-    makeRequest("GET", `${path}/getAllArmy`)
+    makeRequest("GET", `${path}getAllArmy`)
         .then(res => { console.log(res) });
 }
 

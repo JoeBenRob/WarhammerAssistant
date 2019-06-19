@@ -26,24 +26,24 @@ function create() {
 }
 
 function read(id) {
-    makeRequest("GET", `${path}/getAUnit/${id}`)
+    makeRequest("GET", `${path}getAUnit/${id}`)
         .then(res => { console.log(res) });
 }
 
 function readAll() {
-    makeRequest("GET", `${path}/getAllUnit`)
+    makeRequest("GET", `${path}getAllUnit`)
         .then(res => { console.log(res) });
 }
 
 function update(id) {
     let aUnit = createUnit();
-    makeRequest("PUT", `${path}/updateUnit/${id}`, JSON.stringify(aUnit))
+    makeRequest("PUT", `${path}updateUnit/${id}`, JSON.stringify(aUnit))
         .then(res => { console.log(res) });
 
 }
 
 function destroy(id) {
-    makeRequest("DELETE", `${path}/deleteUnit/${id}`)
+    makeRequest("DELETE", `${path}deleteUnit/${id}`)
         .then(res => { console.log(res) });
 }
 

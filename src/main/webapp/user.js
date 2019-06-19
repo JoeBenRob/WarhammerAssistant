@@ -21,29 +21,29 @@ const makeRequest = (method, url, body) => {
 
 function create() {
     let aUser = createUser();
-    makeRequest("POST", `${path}/createUser/`, JSON.stringify(aUser))
+    makeRequest("POST", `${path}createUser/`, JSON.stringify(aUser))
         .then(res => { console.log(res) });
 }
 
 function read(id) {
-    makeRequest("GET", `${path}/getAUser/${id}`)
+    makeRequest("GET", `${path}getAUser/${id}`)
         .then(res => { console.log(res) });
 }
 
 function readAll() {
-    makeRequest("GET", `${path}/getAllUser`)
+    makeRequest("GET", `${path}getAllUser`)
         .then(res => { console.log(res) });
 }
 
 function update(id) {
     let aUser = createUser();
-    makeRequest("PUT", `${path}/updateUser/${id}`, JSON.stringify(aUser))
+    makeRequest("PUT", `${path}updateUser/${id}`, JSON.stringify(aUser))
         .then(res => { console.log(res) });
 
 }
 
 function destroy(id) {
-    makeRequest("DELETE", `${path}/deleteUser/${id}`)
+    makeRequest("DELETE", `${path}deleteUser/${id}`)
         .then(res => { console.log(res) });
 }
 
