@@ -1,3 +1,6 @@
+const path = "104.155.64.113:8888/WarhammerCalculator/api/army/"; 
+
+
 const makeRequest = (method, url, body) => {
     return new Promise(
         function (res, rej) {
@@ -17,11 +20,20 @@ const makeRequest = (method, url, body) => {
 }
 
 function read(id) {
-    makeRequest("GET", `http://localhost:8080/WarhammerCalculator/api/army/getArmy/${id}`)
+    makeRequest("GET", `${path}/getArmy/${id}`)
         .then(res => { console.log(res) });
 }
 
 function readAll() {
-    makeRequest("GET", "http://localhost:8080/WarhammerCalculator/api/army/getAllArmy")
+    makeRequest("GET", `${path}/getAllArmy`)
         .then(res => { console.log(res) });
 }
+
+// function createArmy() {
+//     const anArmy = {
+
+//     armynamebox.value = name,
+//     allegiance.value =  allegiance
+//     }
+//     return anArmy
+// }
