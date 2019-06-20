@@ -80,7 +80,9 @@ function UnitTableAll(input) {
                 let myArmy = document.createElement('td');
                 myArmy.innerHTML = data[i].army;
                 let myAllegiance = document.createElement('td');
-                myAllegiance.innerHTML = data[i].allegiance;
+                myAllegiance.innerHTML = data[i].role;
+                let myRole = document.createElement('td');
+                myRole.innerHTML = data[i].role;
                 let myMin = document.createElement('td');
                 myMin.innerHTML = data[i].min;
                 let myMax = document.createElement('td');
@@ -91,6 +93,7 @@ function UnitTableAll(input) {
                 myRow.appendChild(myName);
                 myRow.appendChild(myArmy);
                 myRow.appendChild(myAllegiance);
+                myRow.appendChild(myRole);
                 myRow.appendChild(myMin);
                 myRow.appendChild(myMax);
                 myRow.appendChild(myPoints);
