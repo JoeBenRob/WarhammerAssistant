@@ -62,7 +62,12 @@ function tableAll() {
         console.log(value[0].name);
         console.log(value[0].score);
 
+        let data = JSON.parse(value);
+
+
+
         const container = document.getElementById('userTable');
+        console.log(data[0]);
 
         if (container.rows.length > 1) {
 
