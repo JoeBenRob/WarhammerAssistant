@@ -26,7 +26,7 @@ function create() {
 }
 
 function read(id) {
-    makeRequest("GET", `${path}getAUnit/${id}`)
+    makeRequest("GET", `${path}getUnit/${id}`)
         .then(res => { console.log(res) });
 }
 

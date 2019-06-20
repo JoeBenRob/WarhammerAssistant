@@ -24,7 +24,7 @@ public class UserController {
 		return service.getAllUser();
 	}
 	
-	@Path("/getAUser/{id}")
+	@Path("/getUser/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getAUser(@PathParam("id") int id) {

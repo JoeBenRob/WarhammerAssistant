@@ -25,7 +25,7 @@ public class ArmyController {
 		return service.getAllArmy();
 	}
 	
-	@Path("/getAArmy/{id}")
+	@Path("/getArmy/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getAnArmy(@PathParam("id") int id) {

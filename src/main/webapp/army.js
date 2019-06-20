@@ -19,6 +19,12 @@ const makeRequest = (method, url, body) => {
     )
 }
 
+function create() {
+    let anArmy = createArmy();
+    makeRequest("POST", `${path}createArmy/`, JSON.stringify(anArmy))
+        .then(res => { console.log(res) });
+}
+
 function read(id) {
     makeRequest("GET", `${path}getArmy/${id}`)
         .then(res => { console.log(res) });
@@ -26,6 +32,18 @@ function read(id) {
 
 function readAll() {
     makeRequest("GET", `${path}getAllArmy`)
+        .then(res => { console.log(res) });
+}
+
+function update(id) {
+    let anArmy = createUArmy();
+    makeRequest("PUT", `${path}updateArmy/${id}`, JSON.stringify(anArmy))
+        .then(res => { console.log(res) });
+
+}
+
+function destroy(id) {
+    makeRequest("DELETE", `${path}deleteUArmy/${id}`)
         .then(res => { console.log(res) });
 }
 

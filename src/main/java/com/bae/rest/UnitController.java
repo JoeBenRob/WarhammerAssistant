@@ -25,7 +25,7 @@ public class UnitController {
 		return service.getAllUnit();
 	}
 	
-	@Path("/getAUnit/{id}")
+	@Path("/getUnit/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getAUnit(@PathParam("id") int id) {

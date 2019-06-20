@@ -25,7 +25,7 @@ public class AllegianceController {
 		return service.getAllAllegiance();
 	}
 	
-	@Path("/getAnAllegiance/{id}")
+	@Path("/getAllegiance/{id}")
 	@GET
 	@Produces({ "application/json" })
 	public String getAnAllegiance(@PathParam("id") int id) {

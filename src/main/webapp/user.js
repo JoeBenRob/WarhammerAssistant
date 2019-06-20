@@ -1,4 +1,4 @@
-const path = "http://35.205.137.159:8888/WarhammerCalculator/api/user/"; 
+const path = "http://35.205.137.159:8888/WarhammerCalculator/api/user/";
 
 
 const makeRequest = (method, url, body) => {
@@ -26,7 +26,7 @@ function create() {
 }
 
 function read(id) {
-    makeRequest("GET", `${path}getAUser/${id}`)
+    makeRequest("GET", `${path}getUser/${id}`)
         .then(res => { console.log(res) });
 }
 
@@ -54,3 +54,38 @@ function createUser() {
     }
     return aUser;
 }
+
+function tableAll() {
+    makeRequest("GET", `${path}getAllUser`).then(value => {
+        console.log(value) 
+        let data = JSON.stringify(value);
+        const container = document.getElementById('userTable');
+
+        if (container.rows.length > 1) {
+
+            let tableSize = container.rows.length;
+            for (i = tableSize; i > 1; i--) {
+                container.deleteRow(i - 1);
+            }
+
+        }
+
+        for (let i = 0; i < value.length; i++) {
+            let myRow = document.createElement('tr');
+            container.appendChild(myRow);
+            let myUserid = document.createElement('td');
+            myUserid.innerHTML = value[i].id;
+            let myName = document.createElement('td');
+            myName.innerHTML = value[i].name;
+            let myScore = document.createElement('td');
+            myScore.innerHTML = value[i].score;
+
+            myRow.appendChild(myUserid);
+            myRow.appendChild(myName);
+            myRow.appendChild(myScore);
+        }
+    })
+        .catch((error) => console.log(error.message));
+    return false;
+}
+

@@ -18,6 +18,7 @@
     </div>
 
     <div class="sidenav">
+        <img src="smile.png" width="160" height="160" class="d-inline-block align-middle" alt="">
         <a href="index.html" class="textfont">HOME</a>
         <a href="user.html" class="textfont">USERS</a>
         <a href="army.html" class="textfont">ARMIES</a>
@@ -36,13 +37,12 @@
                 <input type="button" onclick="read(num1.value)" value="Get a user">
                 <hr>
                 </hr>
-                <!-- name -->
                 <p>Name:</p>
                 <input id="namebox" type="text" placeholder="enter name"><br> 
                 <p>Score:</p>
                 <input id="scorebox" type="number" placeholder="enter score"><br>
                 <p>Create a user</p>
-                <input type="button" onclick="create()" value="Create user"> </input><br>
+                <input type="button" onclick="create()" value="Create user"><br>
                 <p>Update a user</p>
                 <input type="button" onclick="update(userToUpdate.value)" value="Update user">
                 <input id="userToUpdate" type="number" placeholder="enter id"><br>
@@ -52,11 +52,21 @@
                 <input id="accToDelete" type="number" placeholder="enter id">
                 <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
             </div>
+
             <div>
                 <hr>
                 </hr>
                 <p>Result:
                     <span id="result"></span>
+                    <input type="button" value="Get all users." onclick= "tableAll()">
+                    
+                    <table id="userTable" border="1">
+                            <tr>
+                              <th>User id</th>  
+                              <th>Name</th>    
+                              <th>Score</th> 
+                            </tr>
+                          </table>
                 </p>
             </div>
         </div>
