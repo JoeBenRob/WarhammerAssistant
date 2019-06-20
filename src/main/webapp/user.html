@@ -28,6 +28,28 @@
     <form>
         <div class="container">
             <div>
+                <hr>
+                </hr>
+                <p>Result:
+                    <span id="result"></span>
+                    <input type="button" value="Get all users." onclick="tableAll()">
+
+                    <table id="userTable" class="table table-borderless table-striped">
+                        <thead>
+                                <tr class="table-active">
+                                <th class="textfont">User id</th>
+                                <th class="textfont">Name</th>
+                                <th class="textfont">Score</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr class="table-active"></tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+            <div>
                 <p> Get all users</p>
                 <input type="button" onclick="readAll()" value="Get all users"> <br>
                 <hr>
@@ -38,7 +60,7 @@
                 <hr>
                 </hr>
                 <p>Name:</p>
-                <input id="namebox" type="text" placeholder="enter name"><br> 
+                <input id="namebox" type="text" placeholder="enter name"><br>
                 <p>Score:</p>
                 <input id="scorebox" type="number" placeholder="enter score"><br>
                 <p>Create a user</p>
@@ -58,15 +80,15 @@
                 </hr>
                 <p>Result:
                     <span id="result"></span>
-                    <input type="button" value="Get all users." onclick= "tableAll()">
-                    
-                    <table id="userTable" border="1">
-                            <tr>
-                              <th>User id</th>  
-                              <th>Name</th>    
-                              <th>Score</th> 
-                            </tr>
-                          </table>
+                    <input type="button" value="Get all users." onclick="tableAll()">
+
+                    <table id="userTable" border="1" class="table">
+                        <tr>
+                            <th class="textfont">User id</th>
+                            <th class="textfont">Name</th>
+                            <th class="textfont">Score</th>
+                        </tr>
+                    </table>
                 </p>
             </div>
         </div>

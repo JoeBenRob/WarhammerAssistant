@@ -8,6 +8,7 @@ INSERT INTO UNIT (id, name, army, allegiance, min, max, points) VALUES (1, 'Saur
 INSERT INTO UNIT (id, name, army, allegiance, min, max, points) VALUES (2, 'Saurus Guard'	, 'Seraphon'	, 'Order'	, 5		, 20	, 100	)
 INSERT INTO UNIT (id, name, army, allegiance, min, max, points) VALUES (3, 'Skink'			, 'Seraphon'	, 'Order'	, 10	, 40	, 60	)
 INSERT INTO UNIT (id, name, army, allegiance, min, max, points) VALUES (4, 'Saurus Knight'	, 'Seraphon'	, 'Order'	, 5		, 15	, 150	)
+INSERT INTO UNIT (id, name, army, allegiance, min, max, points) VALUES (5, 'Free Guild Guard', 'Free Peoples', 'Order', 10, 40, 80 )
 
 INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (1, 'Order')
 INSERT INTO ALLEGIANCE (allegianceId, allegiance) VALUES (2, 'Chaos')
