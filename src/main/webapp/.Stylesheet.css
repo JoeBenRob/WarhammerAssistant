@@ -49,10 +49,20 @@ body { background: rgba(129, 6, 6, 0.849) !important; }
   .sidenav a {font-size: 18px;}
 }
 
-.thread {
-
+.btn-group button {
+  background-color: rgba(129, 6, 6, 0.849);
+  border: solid 2px #640202d8;
+  color: #f57812b7;
+  padding: 5px 12px;
+  cursor: pointer;
+  height: 50px;
+  width: 150px;
 }
 
-.table {
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
 
+.btn-group button:hover {
+  background-color: rgba(112, 4, 4, 0.849);
 }

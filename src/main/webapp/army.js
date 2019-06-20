@@ -101,3 +101,51 @@ function UnitTableAll(input) {
         .catch((error) => console.log(error.message));
     return false;
 }
+
+
+
+function UnitTableAllbyAllegiance(input) {
+    makeRequest("GET", `http://35.228.226.158:8888/WarhammerCalculator/api/unit/getAllUnit`).then(value => {
+
+        let data = JSON.parse(value);
+        const container = document.getElementById('unitTable');
+
+        if (container.rows.length > 1) {
+
+            let tableSize = container.rows.length;
+            for (i = tableSize; i > 1; i--) {
+                container.deleteRow(i - 1);
+            }
+
+        }
+
+        for (let i = 0; i < value.length; i++) {
+            if (data[i].allegiance === input) {
+                let myRow = document.createElement('tr');
+                container.appendChild(myRow);
+                let myName = document.createElement('td');
+                myName.innerHTML = data[i].name;
+                let myArmy = document.createElement('td');
+                myArmy.innerHTML = data[i].army;
+                let myAllegiance = document.createElement('td');
+                myAllegiance.innerHTML = data[i].allegiance;
+                let myMin = document.createElement('td');
+                myMin.innerHTML = data[i].min;
+                let myMax = document.createElement('td');
+                myMax.innerHTML = data[i].max;
+                let myPoints = document.createElement('td');
+                myPoints.innerHTML = data[i].points;
+
+                myRow.appendChild(myName);
+                myRow.appendChild(myArmy);
+                myRow.appendChild(myAllegiance);
+                myRow.appendChild(myMin);
+                myRow.appendChild(myMax);
+                myRow.appendChild(myPoints);
+            }
+
+        }
+    })
+        .catch((error) => console.log(error.message));
+    return false;
+}
