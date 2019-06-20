@@ -57,7 +57,10 @@ function createUser() {
 
 function tableAll() {
     makeRequest("GET", `${path}getAllUser`).then(value => {
-        console.log(value) 
+        console.log(value);
+        console.log(value[0].id);
+        console.log(value[0].name);
+        console.log(value[0].score);
         let data = JSON.stringify(value);
         const container = document.getElementById('userTable');
 
