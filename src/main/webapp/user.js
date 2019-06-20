@@ -57,17 +57,9 @@ function createUser() {
 
 function tableAll() {
     makeRequest("GET", `${path}getAllUser`).then(value => {
-        console.log(value);
-        console.log(value[0].id);
-        console.log(value[0].name);
-        console.log(value[0].score);
 
         let data = JSON.parse(value);
-
-
-
         const container = document.getElementById('userTable');
-        console.log(data[0]);
 
         if (container.rows.length > 1) {
 
@@ -82,11 +74,11 @@ function tableAll() {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
             let myUserid = document.createElement('td');
-            myUserid.innerHTML = value[i].id;
+            myUserid.innerHTML = data[i].id;
             let myName = document.createElement('td');
-            myName.innerHTML = value[i].name;
+            myName.innerHTML = data[i].name;
             let myScore = document.createElement('td');
-            myScore.innerHTML = value[i].score;
+            myScore.innerHTML = data[i].score;
 
             myRow.appendChild(myUserid);
             myRow.appendChild(myName);
