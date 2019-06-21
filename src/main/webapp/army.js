@@ -1,4 +1,4 @@
-const path = "http://35.228.226.158:8888/WarhammerCalculator/api/army/";
+const path = "http://35.242.246.89:8888/WarhammerCalculator/api/army/";
 
 
 const makeRequest = (method, url, body) => {
@@ -57,7 +57,7 @@ function destroy(id) {
 // }
 
 function UnitTableAll(input) {
-    makeRequest("GET", `http://35.228.226.158:8888/WarhammerCalculator/api/unit/getAllUnit`).then(value => {
+    makeRequest("GET", `http://35.242.246.89:8888/WarhammerCalculator/api/unit/getAllUnit`).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
@@ -108,7 +108,7 @@ function UnitTableAll(input) {
 
 
 function UnitTableAllbyAllegiance(input) {
-    makeRequest("GET", `http://35.228.226.158:8888/WarhammerCalculator/api/unit/getAllUnit`).then(value => {
+    makeRequest("GET", `http://35.242.246.89:8888/WarhammerCalculator/api/unit/getAllUnit`).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('unitTable');
