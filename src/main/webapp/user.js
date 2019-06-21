@@ -1,4 +1,4 @@
-const path = "http://35.228.226.158:8888/WarhammerCalculator/api/user/";
+const path = "http://35.242.246.89:8888/WarhammerCalculator/api/user/";
 
 
 const makeRequest = (method, url, body) => {
