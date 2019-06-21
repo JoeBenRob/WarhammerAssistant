@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warhammer Assistant-Users</title>
+    <link href=".Stylesheet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>WARHAMMER ASSISTANT</h1>
+        <p>USERS</p>
+    </div>
+
+    <div class="sidenav">
+        <img src="smile.png" width="160" height="160" class="d-inline-block align-middle" alt="">
+        <a href="index.html" class="textfont">HOME</a>
+        <a href="user.html" class="textfont">USERS</a>
+        <a href="army.html" class="textfont">ARMIES</a>
+        <a href="#Search" class="textfont">SEARCH</a>
+    </div>
+
+    <form>
+        <div class="container">
+            <div>
+                <hr>
+                </hr>
+                <p>Result:
+                    <span id="result"></span>
+                    <input type="button" value="Get all users." onclick="tableAll()">
+
+                    <table id="userTable" class="table table-borderless table-striped">
+                        <thead>
+                                <tr class="table-active">
+                                <th class="textfont">User id</th>
+                                <th class="textfont">Name</th>
+                                <th class="textfont">Score</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr class="table-active"></tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+            <div>
+                <p> Get all users</p>
+                <input type="button" onclick="readAll()" value="Get all users"> <br>
+                <hr>
+                </hr>
+                <p>Find a user</p>
+                <input id="num1" type="number" placeholder="enter id">
+                <input type="button" onclick="read(num1.value)" value="Get a user">
+                <hr>
+                </hr>
+                <p>Name:</p>
+                <input id="namebox" type="text" placeholder="enter name"><br>
+                <p>Score:</p>
+                <input id="scorebox" type="number" placeholder="enter score"><br>
+                <p>Create a user</p>
+                <input type="button" onclick="create()" value="Create user"><br>
+                <p>Update a user</p>
+                <input type="button" onclick="update(userToUpdate.value)" value="Update user">
+                <input id="userToUpdate" type="number" placeholder="enter id"><br>
+                <hr>
+                </hr>
+                <p>Delete a user</p>
+                <input id="accToDelete" type="number" placeholder="enter id">
+                <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
+            </div>
+
+            <div>
+                <hr>
+                </hr>
+                <p>Result:
+                    <span id="result"></span>
+                    <input type="button" value="Get all users." onclick="tableAll()">
+
+                    <table id="userTable" border="1" class="table">
+                        <tr>
+                            <th class="textfont">User id</th>
+                            <th class="textfont">Name</th>
+                            <th class="textfont">Score</th>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+    </form>
+
+    <script src="user.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

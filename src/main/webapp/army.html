@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warhammer Assistant</title>
+    <link href=".Stylesheet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>WARHAMMER ASSISTANT</h1>
+        <p>ARMIES</p>
+    </div>
+
+    <div class="sidenav">
+        <img src="smile.png" width="160" height="160" class="d-inline-block align-middle" alt="">
+        <a href="index.html" class="textfont">HOME</a>
+        <a href="user.html" class="textfont">USERS</a>
+        <a href="army.html" class="textfont">ARMIES</a>
+        <a href="#Search" class="textfont">SEARCH</a>
+    </div>
+
+    <div class="container">
+        <div class="btn-group" style=" width:100%">
+            <div class="container">
+                <div class="row">
+                    <div class="col"><button id="orderButton" onclick="UnitTableAllbyAllegiance('Order')">ORDER</button>
+                    </div>
+                    <div class="col"><button id="chaosButton" onclick="UnitTableAllbyAllegiance('Chaos')">CHAOS</button>
+                    </div>
+                    <div class="col"><button id="destructionButton"
+                            onclick="UnitTableAllbyAllegiance('Destruction')">DESTRUCTION</button></div>
+                    <div class="col"><button id="deathButton" onclick="UnitTableAllbyAllegiance('Death')">DEATH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="container" style="padding:10px">
+                <div class="row">
+                    <div class="col-sm-2"><button id="aelvesButton" onclick="UnitTableAll('Aelves')">Aelves</button>
+                    </div>
+                    <div class="col-sm-2"><button id="beastclawButton" onclick="UnitTableAll('Beastclaw Raiders')">Beastclaw Raiders</button></div>
+                    <div class="col-sm-2"><button id="bocButton" onclick="UnitTableAll('Beasts of Chaos')">Beasts of Chaos</button></div>
+                    <div class="col-sm-2"><button id="bokButton" onclick="UnitTableAll('Blades of Khorne')">Blades of Khorne</button></div>
+                    <div class="col-sm-2"><button id="bsButton" onclick="UnitTableAll('Bone Splitters')">Bone Splitters</button></div>
+                    <div class="col-sm-2"><button id="cocButton" onclick="UnitTableAll('Creatures of Chaos')">Creatures of Chaos</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="container" style="padding:10px">
+                <div class="row">
+                    <div class="col-sm-2"><button id="dokButton" onclick="UnitTableAll('Daughters of Khaine')">Daughters of Khaine</button></div>
+                    <div class="col-sm-2"><button id="dotButton" onclick="UnitTableAll('Disciples of Tzeentch')">Disciples of Tzeentch</button></div>
+                    <div class="col-sm-2"><button id="dispossessedButton" onclick="UnitTableAll('Dispossessed')">Dispossessed</button></div>
+                    <div class="col-sm-2"><button id="everchosenButton" onclick="UnitTableAll('Everchosen')">Everchosen</button></div>
+                    <div class="col-sm-2"><button id="fecButton" onclick="UnitTableAll('Flesh-eater Courts')">Flesh-eater Courts</button></div>
+                    <div class="col-sm-2"><button id="fpButton" onclick="UnitTableAll('Free Peoples')">Free
+                            Peoples</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="container" style="padding:10px">
+
+                <div class="row">
+                    <div class="col-sm-2"><button id="fyreslayersButton" onclick="UnitTableAll('Fyreslayers')">Fyreslayers</button></div>
+                    <div class="col-sm-2"><button id="gitzButton" onclick="UnitTableAll('Gloomspire Gitz')">Gloomspire Gitz</button></div>
+                    <div class="col-sm-2"><button id="gutbustersButton" onclick="UnitTableAll('Gutbusters')">Gutbusters</button></div>
+                    <div class="col-sm-2"><button id="hebonitesButton" onclick="UnitTableAll('Hebonites of Slaanesh')">Hebonites of Slaanesh</button></div>
+                    <div class="col-sm-2"><button id="ironjawzButton" onclick="UnitTableAll('Ironjawz')">Ironjawz</button></div>
+                    <div class="col-sm-2"><button id="idonethButton" onclick="UnitTableAll('Idoneth Deepkin')">Idoneth Deepkin</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="container" style="padding:10px">
+                <div class="row">
+                    <div class="col-sm-2"><button id="koButton" onclick="UnitTableAll('Kharadron Overlords')">Kharadron Overlords</button></div>
+                    <div class="col-sm-2"><button id="loNButton" onclick="UnitTableAll('Legions of Nagash')">Legions of Nagash</button></div>
+                    <div class="col-sm-2"><button id="monButton" onclick="UnitTableAll('Magotkin of Nurgle')">Magotkin of Nurgle</button></div>
+                    <div class="col-sm-2"><button id="nighthauntButton" onclick="UnitTableAll('Nighthaunt')">Nighthaunt</button></div>
+                    <div class="col-sm-2"><button id="seraphonButton"
+                            onclick="UnitTableAll('Seraphon')">Seraphon</button>
+                    </div>
+                    <div class="col-sm-2"><button id="skavenButton" onclick="UnitTableAll('Skaven')">Skaven</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="container" style="padding:10px">
+                <div class="row">
+                    <div class="col"><button id="stormcastButton" onclick="UnitTableAll('Stormcast Eternals')">Stormcast Eternals</button></div>
+                    <div class="col"><button id="sylvanethButton" onclick="UnitTableAll('Sylvaneth')">Sylvaneth</button></div>
+                </div>
+            </div>
+        </div>
+
+
+        <table id="unitTable" class="table table-borderless table-striped">
+            <thead>
+                <tr class="table-active">
+                    <th class="textfont">Name</th>
+                    <th class="textfont">Army</th>
+                    <th class="textfont">Allegiance</th>
+                    <th class="textfont">Role</th>
+                    <th class="textfont">Min</th>
+                    <th class="textfont">Max</th>
+                    <th class="textfont">Points</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="table-active"></tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    <script src="army.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
