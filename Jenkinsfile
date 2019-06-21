@@ -36,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp /var/lib/jenkins/workspace/JobExp/target/WarhammerCalculator.war /home/robinson93_j/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp /var/lib/jenkins/workspace/JobExp/target/WarhammerCalculator.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
