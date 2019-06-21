@@ -107,17 +107,6 @@ body { background: #EED5AC !important; }
 
 }
 
-/* pop up input */
-
-.open-button {
-  background-color: #555;
-  color: white;
-  
-  border: none;
-  cursor: pointer;
-
-}
-
 /* The popup chat - hidden by default */
 .chat-popup {
   display: none;
@@ -128,7 +117,7 @@ body { background: #EED5AC !important; }
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 200px;
+  /* max-width: 200px; */
   padding: 10px;
   background-color: #a39175;
 }

@@ -22,12 +22,13 @@ function update() {
     id = document.getElementById('updateId').value;
     let aUser = updateUser();
     makeRequest("PUT", `${path}updateUser/${id}`, JSON.stringify(aUser))
-
+    tableAll();
 }
 
 function destroy() {
     id = document.getElementById('deleteId').value;
     makeRequest("DELETE", `${path}deleteUser/${id}`)
+    tableAll();
 }
 
 function createUser() {
@@ -62,15 +63,18 @@ function tableByName() {
             }
 
         }
-        let myRow = document.createElement('tr');
-        container.appendChild(myRow);
-        let myName = document.createElement('td');
-        myName.innerHTML = data.name;
-        let myScore = document.createElement('td');
-        myScore.innerHTML = data.score;
+            let myRow = document.createElement('tr');
+            container.appendChild(myRow);
+            let myId = document.createElement('td');
+            myId.innerHTML = data[i].id;
+            let myName = document.createElement('td');
+            myName.innerHTML = data[i].name;
+            let myScore = document.createElement('td');
+            myScore.innerHTML = data[i].score;
 
-        myRow.appendChild(myName);
-        myRow.appendChild(myScore);
+            myRow.appendChild(myId);
+            myRow.appendChild(myName);
+            myRow.appendChild(myScore);
     })
 }
 
@@ -110,6 +114,7 @@ function tableAll() {
 function create() {
     let aUser = createUser();
     makeRequest("POST", `${path}createUser/`, JSON.stringify(aUser))
+    tableAll();
 }
 
 var coll = document.getElementsByClassName("collapsible");
@@ -127,29 +132,58 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
+function closeAll() {
+    closeMyGetForm();
+    closeMyCreateForm();
+    closeMyUpdateForm();
+    closeMyDeleteForm();
+}
+
 function openMyGetForm() {
-    document.getElementById("myGetForm").style.display = "block";
+    
+    if (document.getElementById("myGetForm").style.display != "block") {
+        closeAll();
+        document.getElementById("myGetForm").style.display = "block";
+    }
+    else { document.getElementById("myGetForm").style.display = "none" }
 }
 function closeMyGetForm() {
     document.getElementById("myGetForm").style.display = "none";
 }
 
 function openMyCreateForm() {
-    document.getElementById("myCreateForm").style.display = "block";
+   
+    if (document.getElementById("myCreateForm").style.display != "block") {
+        closeAll();
+        document.getElementById("myCreateForm").style.display = "block";
+    }
+    else { document.getElementById("myCreateForm").style.display = "none" }
 }
+
 function closeMyCreateForm() {
     document.getElementById("myCreateForm").style.display = "none";
 }
 
 function openMyUpdateForm() {
-    document.getElementById("myUpdateForm").style.display = "block";
+   
+    if (document.getElementById("myUpdateForm").style.display != "block")
+     {
+        closeAll();
+        document.getElementById("myUpdateForm").style.display = "block";
+    }
+    else { document.getElementById("myUpdateForm").style.display = "none" }
 }
 function closeMyUpdateForm() {
     document.getElementById("myUpdateForm").style.display = "none";
 }
 
 function openMyDeleteForm() {
-    document.getElementById("myDeleteForm").style.display = "block";
+  
+    if (document.getElementById("myDeleteForm").style.display != "block") {
+        closeAll();
+        document.getElementById("myDeleteForm").style.display = "block";
+    }
+    else { document.getElementById("myDeleteForm").style.display = "none" }
 }
 function closeMyDeleteForm() {
     document.getElementById("myDeleteForm").style.display = "none";
