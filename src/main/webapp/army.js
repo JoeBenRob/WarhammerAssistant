@@ -70,8 +70,6 @@ function UnitTableAll(input) {
 
         }
 
-        console.log(data);
-
         for (let i = 0; i < value.length; i++) {
              if (data[i].army === input) {
                 let myRow = document.createElement('tr');
