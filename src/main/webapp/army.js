@@ -71,15 +71,15 @@ function UnitTableAll(input) {
         }
 
         for (let i = 0; i < value.length; i++) {
-             if (data[i].army === input) {
+            if (data[i].army === input) {
                 let myRow = document.createElement('tr');
                 container.appendChild(myRow);
                 let myName = document.createElement('td');
                 myName.innerHTML = data[i].name;
-                let myArmy = document.createElement('td');
-                myArmy.innerHTML = data[i].army;
                 let myAllegiance = document.createElement('td');
                 myAllegiance.innerHTML = data[i].allegiance;
+                let myArmy = document.createElement('td');
+                myArmy.innerHTML = data[i].army;
                 let myRole = document.createElement('td');
                 myRole.innerHTML = data[i].role;
                 let myMin = document.createElement('td');
@@ -90,15 +90,15 @@ function UnitTableAll(input) {
                 myPoints.innerHTML = data[i].points;
 
                 myRow.appendChild(myName);
-                myRow.appendChild(myArmy);
                 myRow.appendChild(myAllegiance);
+                myRow.appendChild(myArmy);
                 myRow.appendChild(myRole);
                 myRow.appendChild(myMin);
                 myRow.appendChild(myMax);
                 myRow.appendChild(myPoints);
             }
 
-         }
+        }
     })
         .catch((error) => console.log(error));
     return false;
@@ -127,10 +127,12 @@ function UnitTableAllbyAllegiance(input) {
                 container.appendChild(myRow);
                 let myName = document.createElement('td');
                 myName.innerHTML = data[i].name;
-                let myArmy = document.createElement('td');
-                myArmy.innerHTML = data[i].army;
                 let myAllegiance = document.createElement('td');
                 myAllegiance.innerHTML = data[i].allegiance;
+                let myArmy = document.createElement('td');
+                myArmy.innerHTML = data[i].army;
+                let myRole = document.createElement('td');
+                myRole.innerHTML = data[i].role;
                 let myMin = document.createElement('td');
                 myMin.innerHTML = data[i].min;
                 let myMax = document.createElement('td');
@@ -139,8 +141,9 @@ function UnitTableAllbyAllegiance(input) {
                 myPoints.innerHTML = data[i].points;
 
                 myRow.appendChild(myName);
-                myRow.appendChild(myArmy);
                 myRow.appendChild(myAllegiance);
+                myRow.appendChild(myArmy);
+                myRow.appendChild(myRole);
                 myRow.appendChild(myMin);
                 myRow.appendChild(myMax);
                 myRow.appendChild(myPoints);
@@ -150,4 +153,19 @@ function UnitTableAllbyAllegiance(input) {
     })
         .catch((error) => console.log(error.message));
     return false;
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
 }

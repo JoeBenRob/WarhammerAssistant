@@ -18,48 +18,42 @@ const makeRequest = (method, url, body) => {
     )
 }
 
-function create() {
-    let aUser = createUser();
-    makeRequest("POST", `${path}createUser/`, JSON.stringify(aUser))
-        .then(res => { console.log(res) });
-}
-
-function read(id) {
-    makeRequest("GET", `${path}getUser/${id}`)
-        .then(res => { console.log(res) });
-}
-
-function readAll() {
-    makeRequest("GET", `${path}getAllUser`)
-        .then(res => { console.log(res) });
-}
-
-function update(id) {
-    let aUser = createUser();
+function update() {
+    id = document.getElementById('updateId').value;
+    let aUser = updateUser();
     makeRequest("PUT", `${path}updateUser/${id}`, JSON.stringify(aUser))
-        .then(res => { console.log(res) });
 
 }
 
-function destroy(id) {
+function destroy() {
+    id = document.getElementById('deleteId').value;
     makeRequest("DELETE", `${path}deleteUser/${id}`)
-        .then(res => { console.log(res) });
 }
 
 function createUser() {
     const aUser = {
-        name: namebox.value,
-        score: scorebox.value
+        name: createName.value,
+        score: createScore.value
     }
     return aUser;
 }
 
-function tableAll() {
-    makeRequest("GET", `${path}getAllUser`).then(value => {
+function updateUser() {
+    const aUser = {
+        name: updateName.value,
+        score: updateScore.value
+    }
+    return aUser;
+}
+
+function tableByName() {
+
+    id = document.getElementById('getbyname').value;
+    console.log(id)
+    makeRequest("GET", `${path}getUser/${id}`).then(value => {
 
         let data = JSON.parse(value);
         const container = document.getElementById('userTable');
-
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
@@ -68,18 +62,43 @@ function tableAll() {
             }
 
         }
+        let myRow = document.createElement('tr');
+        container.appendChild(myRow);
+        let myName = document.createElement('td');
+        myName.innerHTML = data.name;
+        let myScore = document.createElement('td');
+        myScore.innerHTML = data.score;
 
+        myRow.appendChild(myName);
+        myRow.appendChild(myScore);
+    })
+}
+
+
+function tableAll() {
+    makeRequest("GET", `${path}getAllUser`).then(value => {
+
+        let data = JSON.parse(value);
+        const container = document.getElementById('userTable');
+        if (container.rows.length > 1) {
+
+            let tableSize = container.rows.length;
+            for (i = tableSize; i > 1; i--) {
+                container.deleteRow(i - 1);
+            }
+
+        }
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myUserid = document.createElement('td');
-            myUserid.innerHTML = data[i].id;
+            let myId = document.createElement('td');
+            myId.innerHTML = data[i].id;
             let myName = document.createElement('td');
             myName.innerHTML = data[i].name;
             let myScore = document.createElement('td');
             myScore.innerHTML = data[i].score;
 
-            myRow.appendChild(myUserid);
+            myRow.appendChild(myId);
             myRow.appendChild(myName);
             myRow.appendChild(myScore);
         }
@@ -88,3 +107,50 @@ function tableAll() {
     return false;
 }
 
+function create() {
+    let aUser = createUser();
+    makeRequest("POST", `${path}createUser/`, JSON.stringify(aUser))
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
+
+function openMyGetForm() {
+    document.getElementById("myGetForm").style.display = "block";
+}
+function closeMyGetForm() {
+    document.getElementById("myGetForm").style.display = "none";
+}
+
+function openMyCreateForm() {
+    document.getElementById("myCreateForm").style.display = "block";
+}
+function closeMyCreateForm() {
+    document.getElementById("myCreateForm").style.display = "none";
+}
+
+function openMyUpdateForm() {
+    document.getElementById("myUpdateForm").style.display = "block";
+}
+function closeMyUpdateForm() {
+    document.getElementById("myUpdateForm").style.display = "none";
+}
+
+function openMyDeleteForm() {
+    document.getElementById("myDeleteForm").style.display = "block";
+}
+function closeMyDeleteForm() {
+    document.getElementById("myDeleteForm").style.display = "none";
+}
