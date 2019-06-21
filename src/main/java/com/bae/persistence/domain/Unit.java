@@ -12,18 +12,18 @@ public class Unit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String army;
 	private String allegiance;
+	private String army;
 	private String role;
 	private int min;
 	private int max;
 	private int points;
-	public Unit(int id, String name, String army, String allegiance, String role, int min, int max, int points) {
+	public Unit(int id, String name, String allegiance, String army, String role, int min, int max, int points) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.army = army;
 		this.allegiance = allegiance;
+		this.army = army;
 		this.role = role;
 		this.min = min;
 		this.max = max;

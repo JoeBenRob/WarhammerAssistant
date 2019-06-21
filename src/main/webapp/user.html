@@ -23,64 +23,87 @@
         <a href="user.html" class="textfont">USERS</a>
         <a href="army.html" class="textfont">ARMIES</a>
         <a href="#Search" class="textfont">SEARCH</a>
+        <input id="searchbar" placeholder="Search...">
     </div>
 
-    <form>
-        <div class="container">
-            <div>
-                <hr>
-                </hr>
-                <p>Result:
-                    <span id="result"></span>
-                    <input type="button" value="Get all users." onclick="tableAll()">
-
-                    <table id="userTable" class="table table-borderless table-striped">
-                        <thead>
-                            <tr class="table-active">
-                                <th class="textfont">User id</th>
-                                <th class="textfont">Name</th>
-                                <th class="textfont">Score</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr class="table-active"></tr>
-                        </tbody>
-                    </table>
-                </p>
+    <div class="container" style="padding:10px">
+        <button class="collapsible">Options:</button>
+        <div class="content">
+            <div class="btn-group" style=" width:100%">
+                <div class="container" style="padding:10px">
+                    <div class="row">
+                        <div class="col"><button id="getalluserbutton" onclick="tableAll()">Get All Users</button>
+                        </div>
+                        <div class="col"><button id="userbutton" onclick="openMyGetForm()">Get
+                                User</button>
+                        </div>
+                        <div class="col"><button id="createuserbutton" onclick="openMyCreateForm()">Create User</button>
+                        </div>
+                        <div class="col"><button id="updateuserbutton" onclick="openMyUpdateForm()">Update User</button>
+                        </div>
+                        <div class="col"><button id="deleteuserbutton" onclick="openMyDeleteForm()">Delete User</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p> Get all users</p>
-                <input type="button" onclick="readAll()" value="Get all users"> <br>
-                <hr>
-                </hr>
-                <p>Find a user</p>
-                <input id="num1" type="number" placeholder="enter id">
-                <input type="button" onclick="read(num1.value)" value="Get a user">
-                <hr>
-                </hr>
-                <p>Name:</p>
-                <input id="namebox" type="text" placeholder="enter name"><br>
-                <p>Score:</p>
-                <input id="scorebox" type="number" placeholder="enter score"><br>
-                <p>Create a user</p>
-                <input type="button" onclick="create()" value="Create user"><br>
-                <p>Update a user</p>
-                <input type="button" onclick="update(userToUpdate.value)" value="Update user">
-                <input id="userToUpdate" type="number" placeholder="enter id"><br>
-                <hr>
-                </hr>
-                <p>Delete a user</p>
-                <input id="accToDelete" type="number" placeholder="enter id">
-                <input type="button" onclick="destroy(accToDelete.value)" value="Delete user"> <br>
-            </div>
-
-
-
         </div>
 
-    </form>
+        <div class="chat-popup" id="myGetForm">
+                <form class="form-container"  style="width:100%">
+                    <label for="msg"><b>Search for User</b></label>
+                    <input id="getbyname" placeholder="Type id.." required>
+                    <button type="button" class="btn formbtn" id="submitget" onclick="tableByName()">Search
+                        <button type="button" class="btn formbtn" onclick="closeMyGetForm()">Close</button>
+                </form>
+            </div>
 
+            <div class="chat-popup" id="myCreateForm">
+                <form class="form-container">
+                    <label for="msg"><b>Create a User</b></label>
+                    <input id="createName" placeholder="Type name.." required>
+                    <input id="createScore" placeholder="Type score..." required>
+                    <button type="button" class="btn formbtn" id="submitget" onclick="create()">Create
+                        <button type="button" class="btn formbtn" onclick="closeMyCreateForm()">Close</button>
+                </form>
+            </div>
+            <div class="chat-popup" id="myUpdateForm">
+                <form class="form-container" style="width:100%">
+                    <label for="msg"><b>Update a User</b></label>
+                    <input id="updateId" placeholder="Type id.." required>
+                    <input id="updateName" placeholder="Type name.." required>
+                    <input id="updateScore" placeholder="Type score..." required>
+                    <button type="button" class="btn formbtn" id="submitget" onclick="update()">Update
+                        <button type="button" class="btn formbtn" onclick="closeMyUpdateForm()">Close</button>
+                </form>
+            </div>
+            <div class="chat-popup" id="myDeleteForm">
+                    <form class="form-container">
+                        <label for="msg"><b>Delete a User</b></label>
+                        <input id="deleteId" placeholder="Type id.." required>
+                        <button type="button" class="btn formbtn" id="submitget" onclick="destroy()">Delete
+                            <button type="button" class="btn formbtn" onclick="closeMyDeleteForm()">Close</button>
+                    </form>
+                </div>
+            
+        <div class="container">
+            <div class="row">
+                <table id="userTable" class="table table-borderless table-striped">
+                    <thead>
+                        <tr class="table-active">
+                            <th class="textfont2">ID</th>
+                            <th class="textfont2">Name</th>
+                            <th class="textfont2">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-active"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
     <script src="user.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
