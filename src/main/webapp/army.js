@@ -1,6 +1,5 @@
 const path = "http://35.242.246.89:8888/WarhammerCalculator/api/army/";
 
-
 const makeRequest = (method, url, body) => {
     return new Promise(
         function (res, rej) {
@@ -71,8 +70,10 @@ function UnitTableAll(input) {
 
         }
 
+        console.log(data);
+
         for (let i = 0; i < value.length; i++) {
-            if (data[i].army === input) {
+             if (data[i].army === input) {
                 let myRow = document.createElement('tr');
                 container.appendChild(myRow);
                 let myName = document.createElement('td');
@@ -80,7 +81,7 @@ function UnitTableAll(input) {
                 let myArmy = document.createElement('td');
                 myArmy.innerHTML = data[i].army;
                 let myAllegiance = document.createElement('td');
-                myAllegiance.innerHTML = data[i].role;
+                myAllegiance.innerHTML = data[i].allegiance;
                 let myRole = document.createElement('td');
                 myRole.innerHTML = data[i].role;
                 let myMin = document.createElement('td');
@@ -99,9 +100,9 @@ function UnitTableAll(input) {
                 myRow.appendChild(myPoints);
             }
 
-        }
+         }
     })
-        .catch((error) => console.log(error.message));
+        .catch((error) => console.log(error));
     return false;
 }
 

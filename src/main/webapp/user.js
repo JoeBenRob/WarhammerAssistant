@@ -1,6 +1,5 @@
 const path = "http://35.242.246.89:8888/WarhammerCalculator/api/user/";
 
-
 const makeRequest = (method, url, body) => {
     return new Promise(
         function (res, rej) {
