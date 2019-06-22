@@ -18,6 +18,7 @@ const makeRequest = (method, url, body) => {
     )
 }
 
+
 function update() {
     id = document.getElementById('updateId').value;
     let aUser = updateUser();
@@ -47,13 +48,14 @@ function updateUser() {
     return aUser;
 }
 
-function tableByName() {
+function tableByid() {
 
-    id = document.getElementById('getbyname').value;
-    console.log(id)
+    id = document.getElementById('getbyid').value;
+    console.log("Flag 1: " + id)
     makeRequest("GET", `${path}getUser/${id}`).then(value => {
-
+        console.log("Flat 2: " + value);
         let data = JSON.parse(value);
+        console.log("Flag 3: " + data);
         const container = document.getElementById('userTable');
         if (container.rows.length > 1) {
 
@@ -63,18 +65,18 @@ function tableByName() {
             }
 
         }
-            let myRow = document.createElement('tr');
-            container.appendChild(myRow);
-            let myId = document.createElement('td');
-            myId.innerHTML = data[i].id;
-            let myName = document.createElement('td');
-            myName.innerHTML = data[i].name;
-            let myScore = document.createElement('td');
-            myScore.innerHTML = data[i].score;
+        let myRow = document.createElement('tr');
+        container.appendChild(myRow);
+        let myId = document.createElement('td');
+        myId.innerHTML = data[i].id;
+        let myName = document.createElement('td');
+        myName.innerHTML = data[i].name;
+        let myScore = document.createElement('td');
+        myScore.innerHTML = data[i].score;
 
-            myRow.appendChild(myId);
-            myRow.appendChild(myName);
-            myRow.appendChild(myScore);
+        myRow.appendChild(myId);
+        myRow.appendChild(myName);
+        myRow.appendChild(myScore);
     })
 }
 
@@ -140,7 +142,7 @@ function closeAll() {
 }
 
 function openMyGetForm() {
-    
+
     if (document.getElementById("myGetForm").style.display != "block") {
         closeAll();
         document.getElementById("myGetForm").style.display = "block";
@@ -152,7 +154,7 @@ function closeMyGetForm() {
 }
 
 function openMyCreateForm() {
-   
+
     if (document.getElementById("myCreateForm").style.display != "block") {
         closeAll();
         document.getElementById("myCreateForm").style.display = "block";
@@ -165,9 +167,8 @@ function closeMyCreateForm() {
 }
 
 function openMyUpdateForm() {
-   
-    if (document.getElementById("myUpdateForm").style.display != "block")
-     {
+
+    if (document.getElementById("myUpdateForm").style.display != "block") {
         closeAll();
         document.getElementById("myUpdateForm").style.display = "block";
     }
@@ -178,7 +179,7 @@ function closeMyUpdateForm() {
 }
 
 function openMyDeleteForm() {
-  
+
     if (document.getElementById("myDeleteForm").style.display != "block") {
         closeAll();
         document.getElementById("myDeleteForm").style.display = "block";

@@ -156,3 +156,5 @@ body { background: #EED5AC !important; }
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.mySlides {display:none;}
