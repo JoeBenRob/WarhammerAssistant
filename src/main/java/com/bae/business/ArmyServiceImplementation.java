@@ -11,7 +11,7 @@ public class ArmyServiceImplementation implements ArmyService {
 	ArmyRepo armyRepo;
 
 	@Override
-	public String addArmy(String army) {
+	public String createArmy(String army) {
 		return armyRepo.createArmy(army);
 	}
 

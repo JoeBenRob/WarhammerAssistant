@@ -14,6 +14,7 @@ import javax.transaction.Transactional.TxType;
 
 import com.bae.persistence.domain.Army;
 import com.bae.persistence.domain.Unit;
+import com.bae.persistence.domain.Army;
 import com.bae.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -25,11 +26,30 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 	@Inject
 	private JSONUtil util;
 	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 	
 	public String getAllArmy() {
 		Query query = manager.createQuery("Select a FROM Army a");
 		Collection<Army> army = (Collection<Army>) query.getResultList();
+		if (army.isEmpty()) {
+			return "{\"message\": \"Army Field is empty\"}";
+		} else {
 		return util.getJSONForObject(army);
+		}
 	}
 
 	@Transactional(REQUIRED)
@@ -41,11 +61,13 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 
 	@Transactional(REQUIRED)
 	public String deleteArmy(int id) {
-		Army anArmy = util.getObjectForJSON(getAnArmy(id), Army.class);
-		if (manager.contains(manager.find(Army.class, id))) {
-			manager.remove(manager.find(Army.class, id));
+		Army army = manager.find(Army.class, id);
+		if (army != null) {
+			manager.remove(army);
+			return "{\"message\": \"Army has been removed\"}";
+		} else {
+			return "{\"message\": \"id doesn't exist\"}";
 		}
-		return "{\"message\": \"Army has been removed\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -55,12 +77,20 @@ public class ArmyDatabaseRepo implements ArmyRepo {
 		if (oldArmy != null) {
 			oldArmy.setName(transArmy.getName());
 			manager.persist(oldArmy);
+			return "{\"message\": \"Army has been updated\"}";
+		} else {
+			return "{\"message\": \"Army does not exist\"}";
 		}
-		return "{\"message\": \"Unit has been updated\"}";
 	}
 
 	public String getAnArmy(int id) {
-		return util.getJSONForObject(manager.find(Army.class, id));
+		Army army = manager.find(Army.class, id);
+		
+		if (army != null) {
+			return util.getJSONForObject(army);
+		} else {
+			return "{\"message\": \"Army doesn't exist\"}";
+		}
 	}
 
 }

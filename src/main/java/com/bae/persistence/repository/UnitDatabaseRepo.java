@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.bae.persistence.domain.Unit;
-import com.bae.persistence.domain.User;
 import com.bae.util.JSONUtil;
 
 @Transactional(TxType.SUPPORTS)
@@ -26,10 +25,30 @@ public class UnitDatabaseRepo implements UnitRepo {
 	@Inject
 	private JSONUtil util;
 	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
 	public String getAllUnit() {
 		Query query = manager.createQuery("Select a FROM Unit a");
 		Collection<Unit> unit = (Collection<Unit>) query.getResultList();
+		if (unit.isEmpty()) {
+			return "{\"message\": \"Unit Field is empty\"}";
+		} else {
 		return util.getJSONForObject(unit);
+		}
 	}
 
 	@Transactional(REQUIRED)
@@ -41,11 +60,13 @@ public class UnitDatabaseRepo implements UnitRepo {
 
 	@Transactional(REQUIRED)
 	public String deleteUnit(int id) {
-		Unit unit = util.getObjectForJSON(getAUnit(id), Unit.class);
-		if (manager.contains(manager.find(Unit.class, id))) {
-			manager.remove(manager.find(Unit.class, id));
+		Unit unit = manager.find(Unit.class, id);
+		if (unit != null) {
+			manager.remove(unit);
+			return "{\"message\": \"Unit has been removed\"}";
+		} else {
+			return "{\"message\": \"id doesn't exist\"}";
 		}
-		return "{\"message\": \"Unit has been removed\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -60,13 +81,20 @@ public class UnitDatabaseRepo implements UnitRepo {
 			oldUnit.setMax(transUnit.getMax());
 			oldUnit.setPoints(transUnit.getPoints());
 			manager.persist(oldUnit);
+			return "{\"message\": \"Unit has been updated\"}";
+		} else {
+			return "{\"message\": \"Unit does not exist\"}";
 		}
-		return "{\"message\": \"Unit has been updated\"}";
 	}
 
-	@Override
 	public String getAUnit(int id) {
-		return util.getJSONForObject(manager.find(Unit.class, id));
+		Unit unit = manager.find(Unit.class, id);
+		
+		if (unit != null) {
+			return util.getJSONForObject(unit);
+		} else {
+			return "{\"message\": \"Unit doesn't exist\"}";
+		}
 	}
-
 }
+

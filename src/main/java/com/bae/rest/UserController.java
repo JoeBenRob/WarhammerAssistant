@@ -35,7 +35,7 @@ public class UserController {
 	@POST
 	@Produces({ "application/json" })
 	public String createUser(String user) {
-		return service.addUser(user);
+		return service.createUser(user);
 	}
 
 	@Path("/deleteUser/{id}")

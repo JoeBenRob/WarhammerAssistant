@@ -21,26 +21,48 @@ public class AllegianceDatabaseRepo implements AllegianceRepo {
 	@Inject
 	private JSONUtil util;
 	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+	
 	public String getAllAllegiance() {
 		Query query = manager.createQuery("Select a FROM Allegiance a");
 		Collection<Allegiance> allegiance = (Collection<Allegiance>) query.getResultList();
+		if (allegiance.isEmpty()) {
+			return "{\"message\": \"Allegiance Field is empty\"}";
+		} else {
 		return util.getJSONForObject(allegiance);
+		}
 	}
 
 	@Transactional(REQUIRED)
-	public String createAllegiance(String user) {
-		Allegiance anAllegiance = util.getObjectForJSON(user, Allegiance.class);
+	public String createAllegiance(String allegiance) {
+		Allegiance anAllegiance = util.getObjectForJSON(allegiance, Allegiance.class);
 		manager.persist(anAllegiance);
 		return "{\"message\": \"Allegiance has been created\"}";
 	}
 
 	@Transactional(REQUIRED)
 	public String deleteAllegiance(int id) {
-		Allegiance anAllegiance = util.getObjectForJSON(getAnAllegiance(id), Allegiance.class);
-		if (manager.contains(manager.find(Allegiance.class, id))) {
-			manager.remove(manager.find(Allegiance.class, id));
+		Allegiance allegiance = manager.find(Allegiance.class, id);
+		if (allegiance != null) {
+			manager.remove(allegiance);
+			return "{\"message\": \"Allegiance has been removed\"}";
+		} else {
+			return "{\"message\": \"id doesn't exist\"}";
 		}
-		return "{\"message\": \"Allegiance has been removed\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -50,11 +72,20 @@ public class AllegianceDatabaseRepo implements AllegianceRepo {
 		if (oldAllegiance != null) {
 			oldAllegiance.setAllegiance(transAllegiance.getAllegiance());
 			manager.persist(oldAllegiance);
+			return "{\"message\": \"Allegiance has been updated\"}";
+		} else {
+			return "{\"message\": \"Allegiance does not exist\"}";
 		}
-		return "{\"message\": \"Allegiance has been updated\"}";
 	}
 
 	public String getAnAllegiance(int id) {
-		return util.getJSONForObject(manager.find(Allegiance.class, id));
+		Allegiance allegiance = manager.find(Allegiance.class, id);
+		
+		if (allegiance != null) {
+			return util.getJSONForObject(allegiance);
+		} else {
+			return "{\"message\": \"Allegiance doesn't exist\"}";
+		}
 	}
 }
+

@@ -36,7 +36,7 @@ public class UnitController {
 	@POST
 	@Produces({ "application/json" })
 	public String createUnit(String user) {
-		return service.addUnit(user);
+		return service.createUnit(user);
 	}
 
 	@Path("/deleteUser/{id}")

@@ -36,7 +36,7 @@ public class AllegianceController {
 	@POST
 	@Produces({ "application/json" })
 	public String createAllegiance(String allegiance) {
-		return service.addAllegiance(allegiance);
+		return service.createAllegiance(allegiance);
 	}
 
 	@Path("/deleteAllegiance/{id}")

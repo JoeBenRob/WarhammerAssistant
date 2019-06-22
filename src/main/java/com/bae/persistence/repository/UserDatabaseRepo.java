@@ -26,11 +26,30 @@ public class UserDatabaseRepo implements UserRepo {
 	@Inject
 	private JSONUtil util;
 	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 	
 	public String getAllUser() {
 		Query query = manager.createQuery("Select a FROM User a");
 		Collection<User> user = (Collection<User>) query.getResultList();
-		return util.getJSONForObject(user);
+		if (user.isEmpty()) {
+			return "{\"message\": \"User Field is empty\"}";
+		} else {
+			return util.getJSONForObject(user);
+		}
 	}
 
 	@Transactional(REQUIRED)
@@ -42,11 +61,13 @@ public class UserDatabaseRepo implements UserRepo {
 
 	@Transactional(REQUIRED)
 	public String deleteUser(int id) {
-		User user = util.getObjectForJSON(getAUser(id), User.class);
-		if (manager.contains(manager.find(User.class, id))) {
-			manager.remove(manager.find(User.class, id));
+		User user = manager.find(User.class, id);
+		if (user != null) {
+			manager.remove(user);
+			return "{\"message\": \"User has been removed\"}";
+		} else {
+			return "{\"message\": \"id doesn't exist\"}";
 		}
-		return "{\"message\": \"User has been removed\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -57,11 +78,19 @@ public class UserDatabaseRepo implements UserRepo {
 			oldUser.setName(transUser.getName());
 			oldUser.setScore(transUser.getScore());
 			manager.persist(oldUser);
+			return "{\"message\": \"User has been updated\"}";
+		} else {
+			return "{\"message\": \"User does not exist\"}";
 		}
-		return "{\"message\": \"User has been updated\"}";
 	}
 
 	public String getAUser(int id) {
-		return util.getJSONForObject(manager.find(User.class, id));
+		User user = manager.find(User.class, id);
+		
+		if (user != null) {
+			return util.getJSONForObject(user);
+		} else {
+			return "{\"message\": \"User doesn't exist\"}";
+		}
 	}
 }

@@ -36,7 +36,7 @@ public class ArmyController {
 	@POST
 	@Produces({ "application/json" })
 	public String createArmy(String army) {
-		return service.addArmy(army);
+		return service.createArmy(army);
 	}
 
 	@Path("/deleteArmy/{id}")

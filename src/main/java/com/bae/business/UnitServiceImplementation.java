@@ -10,7 +10,7 @@ public class UnitServiceImplementation implements UnitService {
 	UnitRepo unitRepo;
 	
 	@Override
-	public String addUnit(String unit) {
+	public String createUnit(String unit) {
 		return unitRepo.createUnit(unit);
 	}
 

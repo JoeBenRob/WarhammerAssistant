@@ -10,7 +10,7 @@ public class UserServiceImplementation implements UserService {
 	UserRepo userRepo;
 	
 	@Override
-	public String addUser(String user) {
+	public String createUser(String user) {
 		return userRepo.createUser(user);
 	}
 

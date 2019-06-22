@@ -50,12 +50,10 @@ function updateUser() {
 
 function tableByid() {
 
-    id = document.getElementById('getbyid').value;
-    console.log("Flag 1: " + id)
+    // let nameid = Number(document.getElementById('getbyid').value)
+    let id = document.getElementById('getbyid').value;
     makeRequest("GET", `${path}getUser/${id}`).then(value => {
-        console.log("Flat 2: " + value);
         let data = JSON.parse(value);
-        console.log("Flag 3: " + data);
         const container = document.getElementById('userTable');
         if (container.rows.length > 1) {
 
@@ -68,16 +66,19 @@ function tableByid() {
         let myRow = document.createElement('tr');
         container.appendChild(myRow);
         let myId = document.createElement('td');
-        myId.innerHTML = data[i].id;
+        myId.innerHTML = data.id;
         let myName = document.createElement('td');
-        myName.innerHTML = data[i].name;
+        myName.innerHTML = data.name;
         let myScore = document.createElement('td');
-        myScore.innerHTML = data[i].score;
+        myScore.innerHTML = data.score;
 
         myRow.appendChild(myId);
         myRow.appendChild(myName);
         myRow.appendChild(myScore);
+
     })
+        .catch((error) => console.log(error.message));
+    return false;
 }
 
 

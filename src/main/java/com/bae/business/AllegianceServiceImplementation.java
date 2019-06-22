@@ -11,7 +11,7 @@ public class AllegianceServiceImplementation implements AllegianceService {
 	AllegianceRepo AllegianceRepo;
 	
 	@Override
-	public String addAllegiance(String allegiance) {
+	public String createAllegiance(String allegiance) {
 		return AllegianceRepo.createAllegiance(allegiance);
 	}
 
